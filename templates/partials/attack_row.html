@@ -1,0 +1,28 @@
+<template id="attack-row-template">
+    <div class="attack-card list-card">
+        
+        <div>
+            <span class="lvl-badge hidden"></span>
+            <a class="atk-name link-styled link-purple" target="_blank"></a>
+            <div class="atk-meta text-gray text-small"></div>
+            <div class="atk-dmg text-small" style="color:#ccc; margin-top:4px;"></div>
+        </div>
+
+        <div class="flex-gap-10" style="align-items: center; margin-left: 5px;">
+            
+            <div style="text-align:right;">
+                <button class="atk-btn btn btn-hit hidden" style="min-width: 70px;">
+                    HIT: <span class="atk-bonus"></span>
+                </button>
+
+                <div class="save-badge badge-save hidden" style="min-width: 75px;">
+                    DC <span class="save-dc"></span> <span class="save-stat"></span>
+                </div>
+            </div>
+
+            <button class="edit-btn btn" title="Edit" style="font-size:1.2em;">✎</button>
+
+            <button class="delete-btn btn btn-delete" title="Remove">&times;</button>
+        </div>
+    </div>
+</template>

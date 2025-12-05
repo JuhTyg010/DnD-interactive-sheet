@@ -1,0 +1,144 @@
+<dialog id="actionDialog">
+    <h3 id="actModalTitle" class="text-purple mb-15">Add Action</h3>
+    
+    <div class="grid-gap-10">
+        <!-- 1. Common Top Section -->
+        <input type="text" id="actName" placeholder="Name (e.g. Fireball)" class="dark-input" />
+        
+        <div class="grid-3-col">
+            <!-- Slot for Type (Spell School / Weapon Type / Item Type) -->
+            <div id="slotType"></div>
+
+            <!-- Source is common to all (Inventory linkage) -->
+            <select id="actSource" class="dark-input">
+                <option value="">- Innate / No Source -</option>
+            </select>
+
+            <!-- Slot for Level (Only Spells use this) -->
+            <div id="slotLevel"></div>
+        </div>
+
+        <!-- 2. Dynamic Stats Section -->
+        <!-- We inject the specific inputs for Weapons or Spells here -->
+        <div id="slotStats"></div>
+
+        <!-- 3. Common Footer -->
+        <input type="text" id="actNotes" placeholder="Notes (e.g. V,S,M or Finesse)" class="dark-input" />
+
+        <div class="flex-end mt-30">
+            <button onclick="document.getElementById('actionDialog').close()" class="btn btn-cancel">Cancel</button>
+            <button id="actSubmitBtn" onclick="commitAction()" class="btn btn-primary bg-purple">Add</button>
+        </div>
+    </div>
+</dialog>
+
+<!-- ================= TEMPLATES ================= -->
+
+<!-- TEMPLATE: SPELL -->
+<!-- Contains: Level, Ability, Range, Duration, Damage, Save Logic -->
+<template id="tmpl-spell-stats">
+    <div class="grid-3-col">
+        <select id="actStat" class="dark-input">
+            <option value="cha">Use CHA</option>
+            <option value="int">Use INT</option>
+            <option value="wis">Use WIS</option>
+            <option value="con">Use CON</option> <!-- Genasi etc -->
+        </select>
+        <input type="text" id="actRange" placeholder="Range (e.g. 60ft)" class="dark-input" />
+        <input type="text" id="actDuration" placeholder="Duration" class="dark-input" />
+    </div>
+
+    <div class="grid-3-col">
+        <input type="text" id="actDmg" placeholder="Damage/Heal" class="dark-input" />
+        
+        <!-- CHECKBOX ADDED HERE -->
+        <div class="flex-row flex-center-y bg-dark-input" style="padding:0 8px; border-radius:4px;">
+            <input type="checkbox" id="actProf" checked style="width:auto; margin-right:8px; cursor:pointer;">
+            <label for="actProf" class="text-gray text-small" style="cursor:pointer; white-space:nowrap;">Proficient</label>
+        </div>
+        
+        <select id="actSaveTarget" class="dark-input">
+            <option value="">- Attack Roll -</option>
+            <option value="DEX">Target: DEX Save</option>
+            <option value="WIS">Target: WIS Save</option>
+            <option value="CON">Target: CON Save</option>
+            <option value="STR">Target: STR Save</option>
+            <option value="CHA">Target: CHA Save</option>
+            <option value="INT">Target: INT Save</option>
+        </select>
+    </div>
+    <input type="hidden" id="actActionType" value="Action" />
+</template>
+
+<template id="tmpl-spell-type">
+    <select id="actType" class="dark-input">
+        <option value="spell_attack">Spell Attack</option>
+        <option value="spell_save">Spell Save</option>
+        <option value="utility">Utility / Other</option>
+    </select>
+</template>
+
+<template id="tmpl-spell-level">
+    <select id="actLevel" class="dark-input">
+        <option value="0">Cantrip</option>
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+        <option value="6">Level 6</option>
+        <option value="7">Level 7</option>
+        <option value="8">Level 8</option>
+        <option value="9">Level 9</option>
+    </select>
+</template>
+
+
+<!-- TEMPLATE: WEAPON -->
+<!-- Contains: Ability, Range, Damage. (No Duration, No Level) -->
+<template id="tmpl-weapon-stats">
+    <div class="grid-3-col">
+        <select id="actStat" class="dark-input">
+            <option value="str">Use STR</option>
+            <option value="dex">Use DEX</option>
+            <option value="cha">Use CHA</option> <!-- Hexblade -->
+            <option value="wis">Use WIS</option> <!-- Shillelagh -->
+        </select>
+        <input type="text" id="actRange" placeholder="Range (e.g. 5ft)" class="dark-input" />
+        <!-- Empty div to keep grid alignment -->
+        <div class="flex-row flex-center-y bg-dark-input" style="padding:0 8px; border-radius:4px;">
+            <input type="checkbox" id="actProf" checked style="width:auto; margin-right:8px; cursor:pointer;">
+            <label for="actProf" class="text-gray text-small" style="cursor:pointer;">Proficient</label>
+        </div>
+    </div>
+
+    <div class="grid-3-col">
+        <input type="text" id="actDmg" placeholder="Damage (e.g. 1d8+3)" class="dark-input" />
+        <input type="text" id="actActionType" placeholder="Action Type" class="dark-input" value="Action"/>
+        <!-- No Save Target for standard weapons -->
+    </div>
+</template>
+
+<template id="tmpl-weapon-type">
+    <select id="actType" class="dark-input">
+        <option value="weapon_melee">Melee Weapon</option>
+        <option value="weapon_range">Ranged Weapon</option>
+    </select>
+</template>
+
+
+<!-- TEMPLATE: ITEM -->
+<!-- Minimal stats -->
+<template id="tmpl-item-stats">
+    <!-- Items usually don't need stats unless you want weight/quantity here -->
+    <div class="text-gray text-small text-center mt-15">
+        Items added here appear in Inventory. To make it an attack (like a Bomb), add it as a Weapon linked to this item.
+    </div>
+</template>
+
+<template id="tmpl-item-type">
+    <select id="actType" class="dark-input">
+        <option value="item">Standard Item</option>
+        <option value="item_consumable">Consumable</option>
+    </select>
+</template>

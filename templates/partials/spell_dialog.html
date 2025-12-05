@@ -1,0 +1,81 @@
+<dialog id="actionDialog">
+    <h3 id="actionModalTitle" class="text-purple mb-15">Name here</h3>
+    
+    <div class="grid-gap-10">
+        <input type="text" id="newActionName" placeholder="Name (e.g. Fireball)" class="dark-input" />
+        
+        <div class="grid-3-col">
+            <div id="actionType"></div>
+
+            <select id="newActionSource" class="dark-input">
+                <option value="">- Innate -</option>
+            </select>
+
+            <select id="newActionStat" class="dark-input">
+                <option value="cha">Use CHA</option>
+                <option value="dex">Use DEX</option>
+                <option value="str">Use STR</option>
+                <option value="wis">Use WIS</option>
+                <option value="int">Use INT</option>
+                <option value="con">Use CON</option>
+            </select>
+        </div>
+
+        <div class="grid-2-col">
+            <input type="text" id="newSpellRange" placeholder="Range (e.g. 60ft)" class="dark-input" />
+            <input type="text" id="newSpellDuration" placeholder="Duration" class="dark-input" />
+        </div>
+
+        <div class="grid-3-col">
+            <input type="text" id="newSpellDmg" placeholder="Damage (e.g. 1d8+3)" class="dark-input" />
+            <input type="text" id="newSpellActionType" placeholder="Action (e.g. Bonus action)" class="dark-input"/>
+            <select id="newAtkTargetSave" class="dark-input hidden">
+                <option value="">Target Saves Vs...</option>
+                <option value="DEX">Target: DEX Save</option>
+                <option value="WIS">Target: WIS Save</option>
+                <option value="CON">Target: CON Save</option>
+                <option value="STR">Target: STR Save</option>
+                <option value="CHA">Target: CHA Save</option>
+                <option value="INT">Target: INT Save</option>
+            </select>
+        </div>
+        <input type="text" id="newAtkNotes" placeholder="Notes (e.g. Finesse)" class="dark-input" />
+
+
+        <div class="flex-end mt-30">
+            <button onclick="document.getElementById('addAttackDialog').close()" class="btn btn-cancel">Cancel</button>
+            <button id="atkSubmitBtn" onclick="commitAttack()" class="btn btn-primary bg-purple">Add</button>
+        </div>
+    </div>
+</dialog>
+
+<template id="spellType">
+    <select class="spellType" class="dark-input" onchange="updateModalView(); toggleSaveInput();">
+        <option value="spell_attack">Spell Attack</option>
+        <option value="spell_save">Spell Save</option>
+        <option value="utility">Utility / Other</option>
+    </select>
+</template>
+
+<template id="attackType">
+    <select class="attackType" class="dark-input" onchange="updateModalView(); toggleSaveInput();">
+        <option value="weapon_melee">Melee Attack</option>
+        <option value="weapon_range">Ranged Attack</option>
+    </select>
+</template>
+
+<template id="spellLevel">
+    <select class="spellLevel" class="dark-input">
+        <option value="0">Cantrip</option>
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+        <option value="6">Level 6</option>
+        <option value="7">Level 7</option>
+        <option value="8">Level 8</option>
+        <option value="9">Level 9</option>
+    </select>
+</template>
+

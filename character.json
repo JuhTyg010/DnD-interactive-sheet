@@ -1,0 +1,545 @@
+{
+    "armor_class": 13,
+    "attunement": [
+        "Shard of Memory",
+        "",
+        ""
+    ],
+    "class": "Warlock",
+    "coins": {
+        "cp": 0,
+        "ep": 0,
+        "gp": 208,
+        "pp": 40,
+        "sp": 0
+    },
+    "death_saves": {
+        "failure": 0,
+        "success": 0
+    },
+    "equipment": "Arcane Focus (orb)\nBook (occult lore)\nScholar's Pack\nDisguise kit\ncostume\nzradlo\nvoda 3l\nwater skin\nbed roll\nzapalky\nnordic map\nrome/greek map\ncentral europe no gods map\nAlien rifle",
+    "feats": [
+        {
+            "name": "Spell Sniper",
+            "notes": "+60ft for ranged (>10ft) attack spells. Ignore 1/2 and 3/4 cover. Being within 5 feet of an enemy doesn\u2019t impose Disadvantage on your attack rolls with spells."
+        },
+        {
+            "name": "Aberrant (Dragon)mark",
+            "notes": " When you fail a Constitution saving throw, you can take a Reaction to roll 1d4. When you cast the level 1 spell from this feat, you can expend one of your Hit Point Dice and roll it. "
+        },
+        {
+            "name": "Superior Darkvision",
+            "notes": "Your eyes were made to see through the darkness of the void. You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+        },
+        {
+            "name": "Inconsequential",
+            "notes": "You are born a mere speck within the endless void of space. You have resistance to necrotic damage."
+        },
+        {
+            "name": "Vacuous Body",
+            "notes": "A shard of the void is trapped inside of your body and can act as a pocket dimension. As an action, you can store or retrieve inanimate objects from inside it. This dimension can hold up to 30 pounds, not exceeding a volume of 1 cubic foot."
+        },
+        {
+            "name": "Worm Hole",
+            "notes": "You can step into the hidden paths created by the void. You can teleport up to 25 feet to an unoccupied space that you can see as a bonus action. Once you use this trait, you can't use it again until you finish a short or long rest."
+        },
+        {
+            "name": "resistance to thunder damage",
+            "notes": "Via ring of warlock",
+            "source": "Ring of the warlock"
+        }
+    ],
+    "hit_dice": "8d8",
+    "hp_current": 59,
+    "hp_max": 59,
+    "initiative": 2,
+    "inventory": [
+        {
+            "id": "item_2",
+            "name": "Ring of the warlock",
+            "type": "item"
+        },
+        {
+            "id": "id_6bbrir4r4",
+            "name": "Dagger",
+            "notes": "2 kusy + 1 in body",
+            "type": "item"
+        },
+        {
+            "id": "id_ykhinpv96",
+            "name": "Sickle",
+            "notes": "in my body ",
+            "type": "item"
+        },
+        {
+            "id": "id_flzoajhio",
+            "name": "Alien rifle",
+            "notes": "",
+            "type": "item"
+        },
+        {
+            "id": "id_n4ou24zka",
+            "name": "Shard of Memory",
+            "notes": "",
+            "type": "item"
+        }
+    ],
+    "invocations": [
+        {
+            "desc": "When you cast Eldritch Blast, add CHA modifier to the damage.",
+            "name": "Agonizing Blast"
+        },
+        {
+            "desc": "When you hit a creature with Eldritch Blast, you can push the creature up to 10 feet away from you.",
+            "name": "Repelling Blast"
+        },
+        {
+            "desc": "When you cast Eldrictch blast, its range increases by a number of feet equal to 30 times your Warlock level.",
+            "name": "Eldritch Spear"
+        },
+        {
+            "desc": "Alter Self (Conc. up to 1 hr) Choose one effect. Use a Magic action to switch effects during the spell.\n\nAquatic: Breathe underwater; Swim Speed equals ground Speed.\n\nAppearance: Change physical look, voice, and species (must keep same size/shape). Stats do not change.\n\nWeapons: Grow Claws, Fangs, or Horns. Unarmed Strikes deal 1d6 (Slash/Pierce/Bludgeon). Use Spellcasting Mod for hit/damage.",
+            "name": "  Master of Myriad Forms"
+        },
+        {
+            "desc": "Concentration, up to 10 min You rise vertically up to 20 feet and remain suspended. Max weight 500 lbs.\n\nVertical Move: You can change your altitude by up to 20 feet as part of your Move.\n\nHorizontal Move: You can only move laterally by pushing or pulling against a fixed object (treat as Climbing).\n\nEnding: You float gently to the ground when the spell ends.",
+            "name": "Ascendant Step"
+        },
+        {
+            "desc": "While you\u2019re in an area of Dim Light or Darkness, you can cast Invisibility on yourself without expending a spell slot.\n\nConcentration, up to 1 hour\n\nA creature you touch has the Invisible condition until the spell ends. The spell ends early immediately after the target makes an attack roll, deals damage, or casts a spell.",
+            "name": "One with Shadows"
+        },
+        {
+            "desc": "Bonus Action. Link minds with a seen creature within 30 ft. You can communicate telepathically (shared language required) up to CHA mod miles (min 1). Lasts Warlock Level minutes. Ends if used again.",
+            "name": "  Awakened Mind"
+        },
+        {
+            "desc": "When you cast a Warlock spell that deals damage, you can change its damage type to Psychic. In addition, when you cast a Warlock spell that is an Enchantment or Illusion, you can do so without Verbal or Somatic components.",
+            "name": "Psychic Spells"
+        },
+        {
+            "desc": "When bonding via Awakened Mind, force target to make WIS save. Fail: It has Disadvantage attacking you; you have Advantage attacking it for bond duration. Recharge: Short/Long Rest or expend Pact Slot (no action).",
+            "name": "Clairvoyant Combatant"
+        }
+    ],
+    "level": 8,
+    "magic_bonus": 1,
+    "name": "Asphoros Morgrem",
+    "proficiency": 3,
+    "size": "8ft",
+    "skills": {
+        "acrobatics": 0,
+        "animal_handling": 0,
+        "arcana": 1,
+        "athletics": 0,
+        "deception": 1,
+        "history": 0,
+        "insight": 0,
+        "intimidation": 1,
+        "investigation": 1,
+        "medicine": 0,
+        "nature": 0,
+        "perception": 0,
+        "performance": 0,
+        "persuasion": 0,
+        "religion": 0,
+        "sleight_of_hand": 0,
+        "stealth": 0,
+        "survival": 0
+    },
+    "species": "Voidborn (Sundered)",
+    "speed": "30ft",
+    "spell_info": {
+        "ability": "cha",
+        "slots": {
+            "1": {
+                "total": 0,
+                "used": 0
+            },
+            "2": {
+                "total": 0,
+                "used": 0
+            },
+            "3": {
+                "total": 0,
+                "used": 0
+            },
+            "4": {
+                "total": 2,
+                "used": 0
+            },
+            "5": {
+                "total": 0,
+                "used": 0
+            }
+        }
+    },
+    "spells": [
+        {
+            "action": "Action",
+            "damage": "1d10 Force + CHA (A.Blast)",
+            "duration": "",
+            "level": "0",
+            "name": "Eldritch Blast",
+            "notes": "2 Beams (Level 8) , push 10ft (R.Blast)",
+            "range": "120ft + Eldritch Spear",
+            "save_stat": "",
+            "source": null,
+            "stat": "cha",
+            "type": "spell_attack"
+        },
+        {
+            "action": "Bonus Action",
+            "damage": "1d6 Necrotic",
+            "duration": "Instatnt",
+            "level": "1",
+            "name": "Hex",
+            "notes": "If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action on a later turn to curse a new creature.",
+            "range": "90ft",
+            "save_stat": "",
+            "source": null,
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": "-",
+            "level": "4",
+            "name": "Dimension Door",
+            "notes": "You teleport to a location within range.",
+            "range": "500ft",
+            "save_stat": "CHA",
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action/Ritual",
+            "damage": " Duration: Concentration, up to 10 minutes",
+            "level": "1",
+            "name": "Detect Magic",
+            "notes": "For the duration, you sense the presence of magical effects within 30 feet of yourself.",
+            "range": "Self",
+            "save_stat": "CHA",
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": " Duration: Concentration, up to 1 minute",
+            "level": "3",
+            "name": "Hypnotic Pattern",
+            "notes": "You create a twisting pattern of colors in a 30-foot Cube within range.",
+            "range": "120ft",
+            "save_stat": "WIS",
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": "3d8 damage + 1d8 for each higher spell slot",
+            "level": "1",
+            "name": "Chromatic Orb",
+            "notes": "Via Aberrant Mark | Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create.f you roll the same number on two or more of the d8s, the orb leaps to a different target of your choice within 30 feet of the target",
+            "range": "90ft",
+            "save_stat": "WIS",
+            "stat": "con",
+            "type": "spell_attack"
+        },
+        {
+            "action": "Action",
+            "damage": "2d6 (level 8)",
+            "level": "0",
+            "name": "Acid Splash",
+            "notes": "Via Aberrant Mark | You create an acidic bubble at a point within range, where it explodes in a 5-foot-radius Sphere.",
+            "range": "60ft",
+            "save_stat": "DEX",
+            "stat": "con",
+            "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": "2d12 Lightning + 1d12 higher level",
+            "level": "1",
+            "name": "Witch Bolt",
+            "notes": "On each of your subsequent turns, you can take a Bonus Action to deal 1d12 Lightning damage to the target automatically, even if the first attack missed.",
+            "range": "60ft",
+            "save_stat": "DEX",
+            "stat": "cha",
+            "type": "spell_attack"
+        },
+        {
+            "action": "Action",
+            "damage": " Duration: Concentration, up to 1 hour",
+            "level": "4",
+            "name": "Summon Aberration",
+            "notes": "",
+            "range": "90ft",
+            "save_stat": "DEX",
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": " Duration: Concentration, up to 1 minute",
+            "level": "4",
+            "name": "Confusion",
+            "notes": "Each creature in a 10-foot-radius Sphere centered on a point you choose within range must succeed on a Wisdom saving throw, or that target can\u2019t take Bonus Actions or Reactions and must roll 1d10 at the start of each of its turns to determine its behavior for that turn, consulting the table below.",
+            "range": "90ft",
+            "save_stat": "WIS",
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": "-",
+            "level": "3",
+            "name": "Hunger of Hadar",
+            "notes": "A 20-foot-radius Sphere of Darkness appears, centered on a point with range and lasting for the duration. The Sphere is Difficult Terrain.Any creature that starts its turn in the area takes 2d6 Cold damage. Any creature that ends its turn there must succeed on a Dexterity saving throw or take 2d6 Acid damage from otherworldly tentacles.",
+            "range": "150ft",
+            "save_stat": "DEX",
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "damage": " Duration: Concentration, up to 10 minutes",
+            "duration": "10 minutes",
+            "level": "3",
+            "name": "Clairvoyance",
+            "notes": "  You create an Invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees).",
+            "range": "1 mile",
+            "save_stat": "DEX",
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": " Duration: Concentration, up to 1 minute",
+            "level": "1",
+            "name": "Tasha's Hideous Laughter",
+            "notes": "On fail it laugh, each turn tries to break from it ",
+            "range": "30ft",
+            "save_stat": "WIS",
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": " Duration: Concentration, up to 1 minute",
+            "level": "2",
+            "name": "Phantasmal Force",
+            "notes": "On a failed save, you create a phantasmal object, creature, or other phenomenon that is no larger than a 10-foot Cube and that is perceivable only to the target for the duration. The phantasm includes sound, temperature, and other stimuli.",
+            "range": "60ft",
+            "save_stat": "INT",
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": "3d6 Psychic + 1d6 higher level",
+            "duration": "",
+            "level": "1",
+            "name": "Dissonant Whispers",
+            "notes": "half demage on fail",
+            "range": "60ft",
+            "save_stat": "WIS",
+            "source": null,
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": " Duration: Concentration, up to 1 minute",
+            "level": "2",
+            "name": "Detect Thoughts",
+            "notes": "Sense Thoughts. Or Read Thoughts.",
+            "range": "self",
+            "save_stat": "WIS",
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "damage": "1d6 necrotic",
+            "duration": "",
+            "level": "1",
+            "name": "Hex I",
+            "notes": "Once per long rest",
+            "range": "",
+            "save_stat": "",
+            "source": "Ring of the warlock",
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": "",
+            "duration": "1 minute",
+            "level": "0",
+            "name": "Minor Illusion",
+            "notes": "  You create a sound or an image of an object within range that lasts for the duration.",
+            "range": "30ft",
+            "save_stat": "",
+            "source": null,
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": "",
+            "duration": "1 minute",
+            "level": "0",
+            "name": "Mage Hand",
+            "notes": "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.",
+            "range": "30ft",
+            "save_stat": "",
+            "source": null,
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": "",
+            "duration": "Concentration, up to 1 minute",
+            "level": "4",
+            "name": "Banishment",
+            "notes": " transported to a harmless demiplane for the duration. While there, the target has the Incapacitated condition. When the spell ends, the target reappears in the space it left or in the nearest unoccupied space if that space is occupied.",
+            "range": "30ft",
+            "save_stat": "CHA",
+            "source": null,
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": "",
+            "duration": "",
+            "level": "0",
+            "name": "Erase Remembrance",
+            "notes": "The creature must succeed on a DC 17 Intelligence saving throw or you erase one of its memories. You can choose to make it forget an event, a person, or a piece of information, lasting up to 10 minutes of its memory. For a spellcaster, this could cause them to forget one of their prepared spells, forcing them to choose a new one after a long rest. This lost memory can only be restored by a greater restoration or wish spell. Once you use this property, you can\u2019t use it again until you finish a long rest.",
+            "range": "on touch",
+            "save_stat": "",
+            "source": "Shard of Memory",
+            "stat": "dex",
+            "type": "utility"
+        },
+        {
+            "action": "Bonus action",
+            "damage": "",
+            "duration": "",
+            "level": "0",
+            "name": "Change Battle Rhythm",
+            "notes": " If the creature is not willing, it must succeed on a DC 15 Intelligence saving throw or you can change it's initiative in a fight by 1d4. If the creature is willing, you can do the same without the saving throw. This can make the creature skip it's turn or make the creature go twice in one turn. You can use this property twice per long rest.",
+            "range": "30ft",
+            "save_stat": "",
+            "source": "Shard of Memory",
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": "",
+            "duration": "Concentration, up to 1 minute",
+            "level": "3",
+            "name": "Fear",
+            "notes": "Each creature in a 30-foot Cone must succeed on a Wisdom saving throw or drop whatever it is holding and have the Frightened condition for the duration.",
+            "range": "self",
+            "save_stat": "WIS",
+            "source": null,
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "action": "Bonus action",
+            "damage": "",
+            "duration": "",
+            "level": "2",
+            "name": "Misty Step",
+            "notes": "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space you can see.",
+            "range": "Self",
+            "save_stat": "",
+            "source": null,
+            "stat": "cha",
+            "type": "utility"
+        },
+        {
+            "action": "Action",
+            "damage": "",
+            "duration": "1 hour",
+            "level": "4",
+            "name": "Charm Monster",
+            "notes": " It does so with Advantage if you or your allies are fighting it. On a failed save, the target has the Charmed condition until the spell ends or until you or your allies damage it. The Charmed creature is Friendly to you. When the spell ends, the target knows it was Charmed by you.",
+            "range": "30 feet",
+            "save_stat": "WIS",
+            "source": null,
+            "stat": "cha",
+            "type": "spell_save"
+        },
+        {
+            "name": "Hex",
+            "source": null,
+            "notes": "If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action on a later turn to curse a new creature.",
+            "type": "utility",
+            "level": "1",
+            "stat": "cha",
+            "range": "90ft",
+            "duration": "Instatnt",
+            "damage": "1d6 Necrotic",
+            "action": "Bonus Action",
+            "proficient": false
+        }
+    ],
+    "stats": {
+        "cha": 18,
+        "con": 14,
+        "dex": 14,
+        "int": 10,
+        "str": 8,
+        "wis": 14
+    },
+    "subclass": "Great Old One",
+    "weapons": [
+        {
+            "action": "Action",
+            "damage": "1d4 Piercing",
+            "duration": "",
+            "name": "Dagger Stab",
+            "notes": "",
+            "range": "Melee",
+            "source": "Dagger",
+            "stat": "dex",
+            "type": "weapon_melee"
+        },
+        {
+            "action": "Action",
+            "damage": "1d4 Slashing",
+            "duration": "",
+            "name": "Sickle Slash",
+            "notes": "",
+            "range": "Melee",
+            "source": "Sickle",
+            "stat": "str",
+            "type": "weapon_melee"
+        },
+        {
+            "action": "Action",
+            "damage": "1d4 Piercing",
+            "duration": "",
+            "name": "Dagger Throw",
+            "notes": "",
+            "range": "20 ft / 60 ft",
+            "source": "Dagger",
+            "stat": "dex",
+            "type": "weapon_range"
+        },
+        {
+            "action": "Action",
+            "damage": "1d4 Piercing",
+            "name": "Dagger Stab",
+            "notes": "",
+            "proficient": false,
+            "range": "Melee",
+            "source": "Dagger",
+            "stat": "dex",
+            "type": "weapon_melee"
+        }
+    ]
+}

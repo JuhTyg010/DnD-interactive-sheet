@@ -1,0 +1,41 @@
+<template id="row-template">
+    <div class="list-card">
+        <div>
+            <span class="badge hidden"></span>
+            <a class="item-name text-bold link-purple" target="_blank"></a>
+            <div class="item-meta text-gray text-small hidden"></div>
+            <div class="item-notes text-gray text-small"></div>
+            <div class="dmg-text text-small hidden"></div>
+        </div>
+
+        <div class="flex-gap-10" style="align-items: center; margin-left: 5px;">
+            <div style="text-align:right;">
+                <button class="atk-btn btn btn-hit hidden" style="min-width: 70px;">
+                    HIT: <span class="atk-bonus"></span>
+                </button>
+
+                <div class="save-badge badge-save hidden" style="min-width: 75px;">
+                    DC <span class="save-dc"></span> <span class="save-stat"></span>
+                </div>
+            </div>
+
+            <button class="edit-btn btn" title="Edit" style="font-size:1.2em;">✎</button>
+            <button class="delete-btn btn btn-delete" title="Remove">&times;</button>
+        </div>
+    </div>
+</template>
+
+<template id="spell-meta">
+    <div class="spell-meta text-light-gray">
+        <div class="s-type"></div>
+        <div class="s-duration"></div>
+        <div class="s-range"></div>
+    </div>
+</template>
+
+<template id="weapon-atk-meta">
+    <div class="weapon-atk-meta text-light-gray">
+        <div class="wa-type"></div>
+        <div class="wa-range"></div>
+    </div>
+</template>

@@ -1,0 +1,974 @@
+:root {
+    /* --- PALETTE --- */
+    --c-bg-main: #121212;
+    --c-bg-card: #1e1e1e;
+    --c-bg-element: #252525;
+    --c-bg-input: #2d2d2d;
+
+    --c-border: #333;
+    --c-border-light: #555;
+
+    --c-text-main: #e0e0e0;
+    --c-text-muted: #888;
+
+    --c-link: #a29bfe;
+    --c-link-hover: #74b9ff;
+
+    /* Accents */
+    --c-purple: #6c5ce7;
+    --c-purple-light: #a29bfe;
+    --c-blue: #0984e3;
+    --c-blue-light: #74b9ff;
+    --c-green: #00ee28;
+    --c-green-light: #39e773;
+    --c-red: #e17055;
+    --c-gold: #ffc400;
+    --c-gold-light: #ffeaa7;
+    --c-cyan: #00cec9;
+    --c-gray: #b2bec3;
+
+    /* Sizing */
+    --radius: 6px;
+    --spell-list-height: 600px;
+}
+
+/* --- 1. BASE & RESET --- */
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background: var(--c-bg-main);
+    color: var(--c-text-main);
+    padding: 20px;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+input:focus, select:focus, button:focus {
+    outline: none;
+    border-color: var(--c-purple);
+}
+
+
+.spell-meta {
+    display: flex;
+    align-items: center;
+}
+
+.spell-meta > div {
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid #ccc; /* The separator line */
+    line-height: 1; /* Keeps line height tight to the text */
+}
+
+.spell-meta > div:last-child {
+    border-right: none; /* Remove line from last item */
+    margin-right: 0;
+}
+
+.weapon-atk-meta {
+    display: flex;
+    align-items: center;
+}
+
+.weapon-atk-meta > div {
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid #ccc; /* The separator line */
+    line-height: 1; /* Keeps line height tight to the text */
+}
+
+.weapon-atk-meta > div:last-child {
+    border-right: none; /* Remove line from last item */
+    margin-right: 0;
+}
+
+/* --- 2. UTILITIES (Reusable classes) --- */
+/* Layouts */
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-gap-10 {
+    display: flex;
+    gap: 10px;
+}
+
+.flex-gap-6 {
+    display: flex;
+    gap: 6px;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Spacing */
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+/* Text & Borders */
+.text-purple {
+    color: var(--c-purple-light);
+}
+
+.text-blue {
+    color: var(--c-blue-light);
+}
+
+.text-gray {
+    color: var(--c-text-muted);
+}
+
+.text-light-gray {
+    color: var(--c-text-main);
+}
+
+.text-gold {
+    color: var(--c-gold);
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-small {
+    font-size: 0.8em;
+}
+
+.text-muted {
+    color: var(--c-text-muted);
+    font-size: 0.9em;
+}
+
+.border-btm {
+    border-bottom: 2px solid var(--c-border);
+}
+
+.border-purple {
+    border-color: var(--c-purple);
+}
+
+.border-blue {
+    border-color: var(--c-blue);
+}
+
+/* Add to static/styles.css */
+.grid-3-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 Equal Columns */
+    gap: 10px;
+}
+
+
+
+.link-styled {
+    text-decoration: none;
+    transition: color 0.2s;
+    color: var(--c-link);
+}
+
+.link-styled:hover {
+    text-decoration: underline;
+    color: var(--c-link-hover);
+}
+
+.link-styled::after {
+    content: " ↗";
+    font-size: 0.7em;
+    opacity: 0.5;
+    color: var(--c-link);
+
+}
+
+.link-purple {
+    color: var(--c-purple-light);
+}
+
+.link-blue {
+    color: var(--c-blue-light);
+}
+
+/* Scrollbars */
+.scroll-y {
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.scroll-y::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-y::-webkit-scrollbar-track {
+    background: var(--c-bg-card);
+    border-radius: 4px;
+}
+
+.scroll-y::-webkit-scrollbar-thumb {
+    background: var(--c-border-light);
+    border-radius: 4px;
+}
+
+/* --- 3. COMPONENTS: INPUTS & BUTTONS --- */
+.dark-input, .stat-input, .hud-input, .hp-input, .coin-input {
+    background: var(--c-bg-input);
+    border: 1px solid var(--c-border-light);
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Specific Input Tweaks */
+.dark-input {
+    padding: 8px;
+    width: 100%;
+    margin: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.stat-input {
+    background: #2c2c2c;
+    width: 40px;
+    padding: 4px;
+}
+
+.hud-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--c-border-light);
+    font-size: 1.4em;
+    font-weight: bold;
+    width: 100%;
+}
+
+.hp-input {
+    background: transparent;
+    border: none;
+    font-size: 1.6em;
+    font-weight: bold;
+    width: 70px;
+}
+
+.coin-input {
+    background: transparent;
+    border: none;
+    font-size: 1.1em;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.dmg-text {
+    color: var(--c-text-main); 
+    margin-top:4px;
+}
+
+.btn {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 6px 12px;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-icon-add {
+    background: #2d3436;
+    color: var(--c-green);
+    border: 1px solid var(--c-green);
+    font-size: 1.2em;
+    padding: 0 10px;
+    line-height: 1.2;
+}
+
+.btn-primary {
+    color: white;
+}
+
+.bg-purple {
+    background: var(--c-purple);
+}
+
+.bg-blue {
+    background: var(--c-blue);
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid var(--c-border-light);
+    color: #aaa;
+}
+
+.btn-delete {
+    background: transparent;
+    color: var(--c-border-light);
+    font-size: 1.4em;
+    padding: 0 5px;
+    line-height: 1;
+}
+
+.edit-btn {
+    background: transparent;
+    color: var(--c-border-light);
+    font-size: 1.4em;
+    padding: 0 5px;
+    line-height: 1;
+}
+
+.edit-btn:hover {
+    color: var(--c-blue);
+}
+
+.btn-delete:hover {
+    color: var(--c-red);
+}
+
+/* --- 4. LAYOUT MODULES --- */
+.header {
+    background: var(--c-bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--c-border);
+    margin-bottom: 20px;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 30px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* --- 5. MODULE: STATS & HUD --- */
+.stats-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-content: start;
+}
+
+.card {
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--c-border-light);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+/* --- NEW HEADER UTILITIES --- */
+
+/* The main container for Name + Bonuses */
+.identity-row {
+    grid-column: span 2;       /* Spans across the grid if inside one */
+    align-items: flex-end;     /* Aligns Name baseline with Bonus inputs */
+    padding-bottom: 10px;
+}
+
+/* Character Name adjustments */
+.char-name {
+    margin-bottom: 5px;
+}
+
+/* The dot separator */
+.char-separator {
+    margin: 0 10px;
+}
+
+/* Specific Input Sizes */
+.input-level {
+    width: 35px;
+}
+
+.input-magic {
+    width: 50px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Container for the right-side bonuses */
+.header-bonuses {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* Utility for centering text */
+.text-center {
+    text-align: center;
+}
+
+/* Large text for PB display */
+.text-giant {
+    font-size: 1.8em;
+}
+
+.stat-mod {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.stat-name {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--c-text-muted);
+}
+
+.save-row {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--c-border-light);
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: var(--c-purple-light);
+}
+
+.roll-val {
+    cursor: pointer;
+    color: var(--c-green-light);
+    font-weight: bold;
+    width: 30px;
+    text-align: right;
+}
+
+.roll-val:hover {
+    color: var(--c-green);
+    text-decoration: underline;
+}
+
+/* HUD Boxes (AC, HP, etc) */
+.combat-hud {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.hud-box {
+    background: var(--c-bg-element);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 70px;
+}
+
+.hud-label {
+    font-size: 0.65em;
+    color: var(--c-text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.hp-box {
+    min-width: 150px;
+    flex: 1.5;
+    border-color: var(--c-border-light);
+}
+
+.hud-box:last-child {
+    min-width: 130px;
+    align-items: flex-start;
+    padding-left: 15px;
+}
+
+/* Death Saves */
+
+/* Death Save Checkboxes */
+.death-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.check-group {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #555;
+    border-radius: 50%;
+    background: #222;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background: var(--c-red);
+    border-color: var(--c-red);
+    box-shadow: 0 0 5px var(--c-red);
+}
+
+/* Success Green Override */
+#ds-succ-1:checked, #ds-succ-2:checked, #ds-succ-3:checked {
+    background: var(--c-green);
+    border-color: var(--c-green);
+    box-shadow: 0 0 5px var(--c-green);
+}
+
+/* --- 6. MODULE: LISTS (Attacks, Spells, Feats) --- */
+#spellsList, #itemsList, #featsList {
+    max-height: var(--spell-list-height);
+    margin-bottom: 20px;
+}
+
+/* Combined with .scroll-y in HTML */
+
+.list-card {
+    background: var(--c-bg-element);
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+/* List Card Colors */
+.list-card.combat {
+    border-left-color: var(--c-purple-light);
+}
+
+.list-card.weapon {
+    border-left-color: var(--c-gray);
+}
+
+.list-card.save {
+    border-left-color: var(--c-red);
+}
+
+.list-card.feat {
+    border-left-color: var(--c-blue);
+    /*background: #2d3436;*/
+}
+
+.list-card.utility {
+    border-left-color: var(--c-cyan);
+}
+
+.list-card.item {
+    border-left-color: var(--c-gold);
+}
+
+/* Badges */
+.badge-save {
+    background: var(--c-red);
+    color: black;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.btn-hit {
+    background: var(--c-purple);
+    color: white;
+    padding: 5px 10px;
+}
+
+.lvl-badge {
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+    border: 1px solid;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.lvl-0 {
+    color: var(--c-green-light);
+    border-color: var(--c-green-light);
+    background: rgba(129, 236, 236, 0.1);
+}
+
+.lvl-n {
+    color: var(--c-purple-light);
+    border-color: var(--c-purple-light);
+    background: rgba(162, 155, 254, 0.1);
+}
+
+/* --- 7. MODULE: SPELLS & SKILLS --- */
+.spell-dash {
+    background: var(--c-bg-element);
+    border-radius: var(--radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--c-border);
+}
+
+.spell-stats-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+    text-align: center;
+}
+
+.spell-stat-box {
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border-light);
+    border-radius: 4px;
+    padding: 8px;
+    flex: 1;
+}
+.grid-gap-10 {
+    gap: 10px;
+}
+
+.spell-stat-val {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--c-purple-light);
+}
+
+.slot-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--c-bg-card);
+    margin-bottom: 4px;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.slot-bubble {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--c-purple);
+    background: transparent;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.slot-bubble.used {
+    background: var(--c-purple);
+    box-shadow: 0 0 5px var(--c-purple);
+}
+
+.skill-row {
+    padding: 4px 0;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 0.9em;
+}
+
+.skill-row:last-child {
+    border-bottom: none;
+}
+
+.skill-row:hover {
+    background: var(--c-bg-element);
+}
+
+.skill-select {
+    background: #222;
+    color: var(--c-text-muted);
+    border: 1px solid var(--c-border-light);
+    border-radius: 3px;
+    font-size: 0.7em;
+    padding: 1px;
+    height: 20px;
+}
+
+/* --- 8. MODULE: INVOCATIONS (Tooltips) --- */
+.invoc-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.invoc-tag {
+    background: #2d3436;
+    border: 1px solid var(--c-blue);
+    border-radius: 20px;
+    padding: 6px 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.invoc-tag:hover {
+    background: #353b48;
+    z-index: 1000;
+}
+
+.invoc-name {
+    color: var(--c-blue-light);
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: help;
+}
+
+.invoc-desc {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 100%;
+    background-color: var(--c-bg-card);
+    color: #dfe6e9;
+    text-align: left;
+    border: 1px solid var(--c-blue-light);
+    border-radius: 6px;
+    padding: 10px;
+    width: 600px;
+    max-width: 90vw; 
+    
+    /* ADD THIS: Allows JS to override your generic positioning */
+    z-index: 2000;
+    max-height: 400px;
+    overflow-y: auto;
+    pointer-events: auto;
+    font-size: 0.85em;
+    white-space: pre-wrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.invoc-desc::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+}
+
+.invoc-tag:hover .invoc-desc {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- 9. MODULE: CURRENCY & ATTUNEMENT --- */
+.coin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.coin-box {
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border);
+    border-radius: 6px;
+    padding: 8px 4px;
+    text-align: center;
+    border-top: 3px solid #555;
+}
+
+.coin-box.cp {
+    border-top-color: var(--c-red);
+}
+
+.coin-box.sp {
+    border-top-color: var(--c-gray);
+}
+
+.coin-box.ep {
+    border-top-color: var(--c-blue-light);
+}
+
+.coin-box.gp {
+    border-top-color: var(--c-gold-light);
+}
+
+.coin-box.pp {
+    border-top-color: var(--c-purple-light);
+}
+
+.coin-label {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.coin-btn {
+    background: #2d3436;
+    border: 1px solid var(--c-border-light);
+    color: #aaa;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
+    padding: 2px 6px;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.coin-btn:hover {
+    background: var(--c-purple);
+    color: white;
+    border-color: var(--c-purple);
+}
+
+.attunement-row {
+    display: flex;
+    align-items: center;
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 8px;
+    transition: border-color 0.2s;
+}
+
+.attunement-row.active {
+    border-color: var(--c-red);
+    background: var(--c-bg-input);
+}
+
+.attunement-icon {
+    width: 24px;
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--c-text-muted);
+    margin-right: 10px;
+}
+
+.attunement-row.active .attunement-icon {
+    color: var(--c-red);
+    text-shadow: 0 0 5px rgba(225, 112, 85, 0.5);
+}
+
+/* --- 10. MODALS & LOGS --- */
+dialog {
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border-light);
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#log {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.log-entry {
+    background: rgba(30, 30, 30, 0.95);
+    border-left: 4px solid var(--c-purple);
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 4px;
+    pointer-events: auto;
+    animation: slideIn 0.2s ease-out;
+}
+
+/* Visual warning when the parent object is gone */
+.list-card.missing-source {
+    opacity: 0.5;
+    border-left-color: #444 !important; /* Grey out the color */
+    background: repeating-linear-gradient(
+        45deg,
+        #252525,
+        #252525 10px,
+        #2a2a2a 10px,
+        #2a2a2a 20px
+    );
+}
+
+.missing-badge {
+    background: #ff5252;
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.crit {
+    border-left-color: var(--c-gold);
+    color: var(--c-gold);
+}
+
+.fail {
+    border-left-color: var(--c-red);
+    color: var(--c-red);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

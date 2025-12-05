@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Asphorus Sheet 2024</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    
+    <div class="header">
+        
+        <div class="identity-row flex-row border-btm mb-15">
+            <div>
+                <h1 id="charName" class="char-name text-purple">...</h1>
+                <div class="text-gray">
+                    <span id="charSpecies">...</span>
+                    <span class="char-separator text-purple">•</span>
+                    Level <input type="number" id="lvlInput" class="stat-input input-level" onchange="updateVal('level', this.value)"/>
+                    <span id="charSubclass">...</span> <span id="charClass">...</span>
+                </div>
+            </div>
+        
+            <div class="header-bonuses">
+                <div class="text-center">
+                    <div class="text-small text-gray">MAGIC ITEM</div>
+                    <input type="number" id="magicBonusInput" class="stat-input input-magic text-purple border-purple" onchange="updateVal('magic_bonus', this.value)"/>
+                </div>
+                <div class="text-center">
+                    <div class="text-small text-gray">PROFICIENCY</div>
+                    <div id="pbDisplay" class="text-purple text-bold text-giant">+0</div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="combat-hud">
+            <div class="hud-box">
+                <div class="hud-label">ARMOR</div>
+                <input type="number" id="acInput" class="hud-input" onchange="updateVal('armor_class', this.value)">
+            </div>
+            <div class="hud-box">
+                <div class="hud-label">INIT</div>
+                <input type="number" id="initInput" class="hud-input" onchange="updateVal('initiative', this.value)">
+            </div>
+            <div class="hud-box">
+                <div class="hud-label">SPEED</div>
+                <input type="text" id="speedInput" class="hud-input" style="width:60px;" onchange="updateText('speed', this.value)">
+            </div>
+            <div class="hud-box">
+                <div class="hud-label">SIZE</div>
+                <input type="text" id="sizeInput" class="hud-input" style="width:60px;" onchange="updateText('size', this.value)">
+            </div>
+            <div class="hud-box hp-box">
+                <div class="hud-label">HIT POINTS</div>
+                <div class="flex-row">
+                    <input type="number" id="hpCurr" class="hp-input" placeholder="Curr" onchange="updateVal('hp_current', this.value)">
+                    <span style="color:#555">/</span>
+                    <input type="number" id="hpMax" class="hp-input" placeholder="Max" onchange="updateVal('hp_max', this.value)">
+                </div>
+                <div class="text-small text-gray" style="margin-top:2px;">Hit Dice: <span id="hitDiceDisplay"></span></div>
+            </div>
+            <div class="hud-box" style="align-items:flex-start;">
+                <div class="hud-label">DEATH SAVES</div>
+                <div class="death-row">
+                    <span class="text-small text-gray" style="width:40px;">SUCC</span>
+                    <div class="check-group">
+                        <input type="checkbox" id="ds-succ-1" onchange="updateDeathSave()">
+                        <input type="checkbox" id="ds-succ-2" onchange="updateDeathSave()">
+                        <input type="checkbox" id="ds-succ-3" onchange="updateDeathSave()">
+                    </div>
+                </div>
+                <div class="death-row">
+                    <span class="text-small text-gray" style="width:40px;">FAIL</span>
+                    <div class="check-group">
+                        <input type="checkbox" id="ds-fail-1" onchange="updateDeathSave()">
+                        <input type="checkbox" id="ds-fail-2" onchange="updateDeathSave()">
+                        <input type="checkbox" id="ds-fail-3" onchange="updateDeathSave()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        
+        <div class="left-panel">
+            
+            <div class="stats-container" id="statsGrid"></div>
+
+            <div class="flex-row border-btm border-blue mb-15 mt-30" style="border-color: #74b9ff;">
+                <h2 class="text-blue">Eldritch Invocations & Class features</h2>
+                <button onclick="document.getElementById('addInvocDialog').showModal()" class="btn btn-icon-add">+</button>
+            </div>
+            <div id="invocList" class="invoc-container"></div>
+
+            <div class="flex-row border-btm mb-15 mt-30" style="border-color: #e17055;">
+                <h2 style="color: #e17055;">Attunement</h2>
+                <div id="attunementCount" class="text-bold text-gray">0 / 3</div>
+            </div>
+            <div id="attunementList"></div>
+
+            <div style="margin-top: 30px;">
+                <h3 class="text-gray border-btm mb-15" style="border-color:#444; padding-bottom:5px;">Currency</h3>
+                <div id="coinContainer" class="coin-grid"></div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3 class="text-gray border-btm mb-15" style="border-color:#444; padding-bottom:5px;">Equipment</h3>
+                <textarea id="equipmentInput" class="dark-input" style="height: 300px; resize: vertical;" placeholder="List your items here..." onchange="updateText('equipment', this.value)"></textarea>
+            </div>
+
+        </div>
+
+        <div class="dashboard-container">
+
+            <div class="spell-dash">
+                <div class="spell-stats-row">
+                    <div class="spell-stat-box">
+                        <div class="text-muted text-small">ABILITY</div>
+                        <div id="spellAbility" class="text-bold" style="color:#fff;">CHA</div>
+                    </div>
+                    <div class="spell-stat-box">
+                        <div class="text-muted text-small">SAVE DC</div>
+                        <div id="globalDc" class="spell-stat-val">0</div>
+                    </div>
+                    <div class="spell-stat-box">
+                        <div class="text-muted text-small">ATTACK</div>
+                        <div id="globalAtk" class="spell-stat-val">0</div>
+                    </div>
+                </div>
+                <h4 class="text-purple border-btm mb-15" style="border-color:#444; font-size:0.9em;">SPELL SLOTS</h4>
+                <div id="spellSlotsContainer"></div>
+            </div>
+            
+            <div class="flex-row border-btm border-purple mb-15">
+                <h2 class="text-purple">Spells & Cantrips</h2>
+                <div class="flex-gap6">
+                    <input type="text" id="spellSearch" placeholder="Search..." 
+                            class="dark-input" 
+                            style="width: 80px; padding: 2px 5px; height: 26px; font-size: 0.8em;" 
+                            oninput="renderAttacksAndItems()">
+
+                    <select id="spellFilter" class="dark-input" 
+                            style="width: auto; padding: 2px 5px; height: 26px; font-size: 0.8em;" 
+                            onchange="renderAttacksAndItems()">
+                        <option value="all">All</option>
+                        <option value="cantrip">Cantrips</option>
+                        <option value="leveled">Leveled</option>
+                    </select>
+
+                    <select id="spellSort" class="dark-input" 
+                            style="width: auto; padding: 2px 5px; height: 26px; font-size: 0.8em;" 
+                            onchange="renderAttacksAndItems()">
+                        <option value="level_asc">Lvl ↑</option>
+                        <option value="level_desc">Lvl ↓</option>
+                        <option value="name">A-Z</option>
+                    </select>
+                </div>
+                <button onclick="openAddAttack('spell')" class="btn btn-icon-add">+</button>
+            </div>
+            <div id="spellsList" class="scroll-y"></div>
+
+            <div class="flex-row border-btm mb-15 mt-30" style="border-color: #b2bec3;">
+                <h2 style="color: #b2bec3;">Weapons & Objects</h2>
+                <button onclick="openAddAttack('weapon')" class="btn btn-icon-add">+ Weapon</button>
+                <button onclick="openAddAttack('item')" class="btn btn-icon-add">+ Item</button>
+
+            </div>
+            <div id="itemsList" class="scroll-y"></div>
+
+            <div class="flex-row border-btm border-blue mb-15 mt-30">
+                <h2 class="text-blue">Feats & Traits</h2>
+                <button onclick="openAddFeat()" class="btn btn-icon-add">+</button>
+            </div>
+            <div id="featsList" class="scroll-y"></div>
+
+        </div>
+    </div>
+
+    <div id="log"></div>
+
+    <dialog id="addFeatDialog">
+        <h3 class="text-blue mb-15">Add New Feat</h3>
+        <div class="grid-gap-10">
+            <input type="text" id="newFeatName" placeholder="Feat Name (e.g. Spell Sniper)" class="dark-input">
+            <select id="newFeatSource" class="dark-input">
+                <option value="">- Innate / No Source -</option>
+                </select>
+            <input type="text" id="newFeatNotes" placeholder="Short description..." class="dark-input">
+            <div class="flex-end mt-30">
+                <button onclick="document.getElementById('addFeatDialog').close()" class="btn btn-cancel">Cancel</button>
+                <button onclick="commitFeat()" class="btn btn-primary bg-blue">Add Feat</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="addInvocDialog">
+        <h3 class="text-blue mb-15">Add New Invocation</h3>
+        <div class="grid-gap-10">
+            <div class="form-group">
+                <label for="newInvocName">Invocation Name</label>
+                <input type="text" id="newInvocName" class="dark-input" placeholder="e.g. Agonizing Blast" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="newInvocDesc">Description</label>
+                <textarea id="newInvocDesc" class="dark-input" rows="4" placeholder="When you cast eldritch blast..."></textarea>
+            </div>
+        </div>
+
+        <div class="dialog-footer">
+            <button type="button" class="btn btn-cancel" onclick="document.getElementById('addInvocDialog').close()">
+                Cancel
+            </button>
+            <button type="button" class="btn btn-confirm" onclick="commitInvoc()">
+                Save Invocation
+            </button>
+        </div>
+    </dialog>
+
+    {% include 'partials/action_dialog.html' %}
+    {% include 'partials/skill_view.html' %} 
+    {% include 'partials/stat_card.html' %} 
+    {% include 'partials/attack_row.html' %}
+    {% include 'partials/feat_row.html' %}
+    {% include 'partials/coin_box.html' %}
+    {% include 'partials/list_item_parts.html' %}
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
