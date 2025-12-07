@@ -1,0 +1,74 @@
+{
+    "armor_class": 12,
+    "class": "Wizard",
+    "death_saves": {
+        "failure": 0,
+        "success": 0
+    },
+    "hit_dice_type": "d6",
+    "hp_current": 10,
+    "hp_max": 10,
+    "initiative": 2,
+    "invocations": [
+        {
+            "desc": "dwadawd",
+            "name": "Agonizing Blast"
+        }
+    ],
+    "level": 2,
+    "name": "Bitch",
+    "skills": {
+        "acrobatics": 0,
+        "animal_handling": 0,
+        "arcana": 0,
+        "athletics": 0,
+        "deception": 1,
+        "history": 0,
+        "insight": 0,
+        "intimidation": 0,
+        "investigation": 0,
+        "medicine": 0,
+        "nature": 1,
+        "perception": 0,
+        "performance": 0,
+        "persuasion": 0,
+        "religion": 0,
+        "sleight_of_hand": 0,
+        "stealth": 0,
+        "survival": 0
+    },
+    "species": "High Elf",
+    "speed": "30",
+    "spell_info": {
+        "slots": {
+            "1": {
+                "total": 2,
+                "used": 0
+            }
+        }
+    },
+    "spellcasting_attribute": "int",
+    "stats": {
+        "cha": 12,
+        "con": 14,
+        "dex": 16,
+        "int": 17,
+        "str": 10,
+        "wis": 13
+    },
+    "subclass": "",
+    "weapons": [
+        {
+            "action": "Action",
+            "damage": "",
+            "name": "dwadwa",
+            "notes": "",
+            "proficient": true,
+            "range": "",
+            "source": null,
+            "stat": "str",
+            "type": "weapon_melee"
+        }
+    ],
+    "magic_bonus": 0
+}

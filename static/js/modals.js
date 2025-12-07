@@ -185,10 +185,14 @@ export class ModalHandler {
         const charClass = document.getElementById('idClass').value;
         const subclass = document.getElementById('idSubclass').value;
         const species = document.getElementById('idSpecies').value;
+        const hitDieType = document.getElementById('idHitDieType').value;
+        const spellcastingAttr = document.getElementById('idSpellcastingAttr').value;
 
         if (!name) return alert("Name is required!");
 
         this.state.updateIdentity(name, charClass, subclass, species);
+        this.state.updateText('hit_dice_type',hitDieType);
+        this.state.updateText('spellcasting_attribute', spellcastingAttr);
         document.getElementById('identityDialog').close();
     }
 

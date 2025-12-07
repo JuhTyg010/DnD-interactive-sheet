@@ -7,7 +7,8 @@ import requests
 import sys
 
 app = Flask(__name__)
-DATA_FILE = 'character.json'
+DATA_FILE = sys.argv[1] if len(sys.argv) > 1 else 'character.json'
+
 
 SKILL_MAP = {
     'str': ['athletics'],
@@ -126,7 +127,7 @@ if __name__ == '__main__':
         app,
         width=1100,
         height=900,
-        resizable=True
+        resizable=True,
     )
 
-    webview.start()
+    webview.start(debug=True)
