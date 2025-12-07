@@ -43,6 +43,18 @@ dialog {
 }
 dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
 
+.slot-edit-row {
+    background: #252525;
+    padding: 5px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between; /* Ensures spacing if needed */
+    align-items: center;
+}
+
+.slot-level-select { width: 100px; margin: 0; }
+.slot-count-input { width: 60px; margin: 0; }
+
 /* --- LOGS --- */
 #log { position: fixed; bottom: 20px; right: 20px; width: 320px; max-height: 300px; overflow-y: auto; display: flex; flex-direction: column-reverse; pointer-events: none; z-index: 100; }
 .log-entry { background: rgba(30, 30, 30, 0.95); border-left: 4px solid var(--c-purple); padding: 10px; margin-top: 8px; border-radius: 4px; pointer-events: auto; animation: slideIn 0.2s ease-out; }

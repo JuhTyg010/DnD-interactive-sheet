@@ -19,4 +19,14 @@ export class Utils {
         return tmpl.content.cloneNode(true);
     }
 
+    static createOptions(count, mapFn, selectedValue = null) {
+        let html = '';
+        for (let i = 1; i <= count; i++) {
+            const { value, text } = mapFn(i);
+            const isSelected = (value == selectedValue) ? 'selected' : '';
+            html += `<option value="${value}" ${isSelected}>${text}</option>`;
+        }
+        return html;
+    }
+
 }

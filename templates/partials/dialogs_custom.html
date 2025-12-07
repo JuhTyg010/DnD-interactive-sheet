@@ -52,3 +52,13 @@
         <button onclick="window.app.modals.commitSpellSlots()" class="btn btn-primary bg-purple">Save Configuration</button>
     </div>
 </dialog>
+
+<template id="tmpl-slot-row">
+    <div class="slot-edit-row">
+        <select class="dark-input slot-level-select"></select>
+        
+        <input type="number" class="dark-input slot-count-input" min="0">
+        
+        <button class="btn btn-delete" style="margin-left:5px;">&times;</button>
+    </div>
+</template>

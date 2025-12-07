@@ -102,38 +102,26 @@ export class ModalHandler {
 
     addSlotRow(level = 1, count = 1) {
         const container = document.getElementById('slotRowsContainer');
-        const rowId = Utils.generateId();
-        
-        const row = document.createElement('div');
-        row.className = 'flex-row';
-        row.style.background = '#252525';
-        row.style.padding = '5px';
-        row.style.borderRadius = '4px';
-        row.id = rowId;
+        const frag = Utils.getClone('tmpl-slot-row');
+        const row = frag.querySelector('.slot-edit-row');
+        row.id = Utils.generateId();
 
-        let options = '';
-        for(let i=1; i<=9; i++) {
-            options += `<option value="${i}" ${parseInt(level) === i ? 'selected' : ''}>Level ${i}</option>`;
-        }
-        
-        // HTML Structure
-        row.innerHTML = `
-            <select class="dark-input slot-level-select" style="width:100px; margin:0;">
-                ${options}
-            </select>
-            <input type="number" class="dark-input slot-count-input" value="${count}" min="0" style="width:60px; margin:0;">
-            <button class="btn btn-delete" style="margin-left:5px;">&times;</button>
-        `;
+        const select = row.querySelector('.slot-level-select');
+        select.innerHTML = Utils.createOptions(9, (i) => {
+            return { value: i, text: `Level ${i}` };
+        }, level);
 
-        // Delete Handler
+        const input = row.querySelector('.slot-count-input');
+        input.value = count;
+
         row.querySelector('.btn-delete').onclick = () => row.remove();
 
-        container.appendChild(row);
+        container.appendChild(frag);
     }
 
     commitSpellSlots() {
         const container = document.getElementById('slotRowsContainer');
-        const rows = container.querySelectorAll('.flex-row');
+        const rows = container.querySelectorAll('.slot-edit-row');
         const newConfig = {};
 
         rows.forEach(row => {

@@ -146,6 +146,10 @@
     "spell_info": {
         "ability": "cha",
         "slots": {
+            "3": {
+                "total": 2,
+                "used": 0
+            },
             "4": {
                 "total": 2,
                 "used": 0
