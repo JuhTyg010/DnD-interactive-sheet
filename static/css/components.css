@@ -22,7 +22,8 @@ input:focus, select:focus, button:focus { outline: none; border-color: var(--c-p
 .btn-primary { color: white; }
 .bg-purple { background: var(--c-purple); }
 .bg-blue { background: var(--c-blue); }
-.btn-cancel { background: transparent; border: 1px solid var(--c-border-light); color: #aaa; }
+.bg-transparent { background: transparent; }
+.btn-cancel { background: transparent; border: 1px solid var(--c-border-light); color: var(--c-text-main); }
 
 .btn-icon-add { background: #2d3436; color: var(--c-green); border: 1px solid var(--c-green); font-size: 1.2em; padding: 0 10px; line-height: 1.2; }
 .btn-delete, .edit-btn { background: transparent; color: var(--c-border-light); font-size: 1.4em; padding: 0 5px; line-height: 1; }
@@ -50,6 +51,12 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
     display: flex;
     justify-content: space-between; /* Ensures spacing if needed */
     align-items: center;
+}
+
+.btn-add {
+    width:100%; 
+    border:1px dashed var(--c-border-light);
+    color: var(--c-text-main);
 }
 
 .slot-level-select { width: 100px; margin: 0; }
