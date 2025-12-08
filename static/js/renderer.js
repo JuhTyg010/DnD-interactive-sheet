@@ -42,7 +42,7 @@ export class SheetRenderer {
         document.getElementById('hpCurr').value = data.hp_current;
         document.getElementById('hpMax').value = data.hp_max;
         document.getElementById('hpCurr').style.color = (data.hp_current <= data.hp_max / 2) ? '#e17055' : '#00b894';
-        document.getElementById('hitDiceDisplay').innerText = data.hit_dice || `${data.level}d8`;
+        document.getElementById('hitDiceDisplay').innerText = data.hit_dice || `${data.level}${data.hit_dice_type}`;
 
         const ds = data.death_saves || { success: 0, failure: 0 };
         [1, 2, 3].forEach(i => {
@@ -93,11 +93,14 @@ export class SheetRenderer {
     }
 
     renderSpellDashboard(data) {
-        const spellAbility = (data.spell_info?.ability) || 'cha';
+        var spellAbility = (data.spell_info?.ability) || 'cha';
+        spellAbility = data.spellcasting_attribute || spellAbility;
         const abilityMod = data.derived_modifiers[spellAbility] || 0;
         const magicBonus = data.magic_bonus || 0;
         const globalDc = 8 + data.derived_pb + abilityMod + magicBonus;
         const globalAtk = data.derived_pb + abilityMod + magicBonus;
+
+        
 
         document.getElementById('spellAbility').innerText = `${spellAbility.toUpperCase()} (${(abilityMod>=0?'+':'')+abilityMod})`;
         document.getElementById('globalDc').innerText = globalDc;

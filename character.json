@@ -41,8 +41,8 @@
         },
         {
             "name": "Worm Hole",
-            "source": null,
-            "notes": "You can step into the hidden paths created by the void. You can teleport up to 25 feet to an unoccupied space that you can see as a bonus action. Once you use this trait, you can't use it again until you finish a short or long rest."
+            "notes": "You can step into the hidden paths created by the void. You can teleport up to 25 feet to an unoccupied space that you can see as a bonus action. Once you use this trait, you can't use it again until you finish a short or long rest.",
+            "source": null
         },
         {
             "name": "resistance to thunder damage",
@@ -50,7 +50,7 @@
             "source": "Ring of the warlock"
         }
     ],
-    "hit_dice": "8d8",
+    "hit_dice_type": "d6",
     "hp_current": 59,
     "hp_max": 59,
     "initiative": 2,
@@ -456,6 +456,19 @@
             "source": null,
             "stat": "cha",
             "type": "spell_save"
+        },
+        {
+            "action": "Action",
+            "damage": "",
+            "duration": "",
+            "level": "0",
+            "name": "dwad",
+            "notes": "",
+            "proficient": true,
+            "range": "",
+            "source": null,
+            "stat": "cha",
+            "type": "spell_attack"
         }
     ],
     "stats": {
@@ -501,5 +514,6 @@
             "stat": "dex",
             "type": "weapon_range"
         }
-    ]
+    ],
+    "spellcasting_attribute": "int"
 }
