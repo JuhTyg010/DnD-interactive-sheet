@@ -36,3 +36,37 @@ export class CharacterAPI {
         }
     }
 }
+
+export class LauncherAPI {
+    async getList() {
+        const res = await fetch('/api/launcher/list');
+        return await res.json();
+    }
+
+    async selectCharacter(path) {
+        await fetch('/api/launcher/select', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ path: path })
+        });
+    }
+
+    async browseSave() {
+        const res = await fetch('/api/launcher/browse-save');
+        return await res.json();
+    }
+
+    async createCharacter(name, path) {
+        const res = await fetch('/api/launcher/create', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ name: name, path: path })
+        });
+        return await res.json();
+    }
+
+    async importCharacter() {
+        const res = await fetch('/api/launcher/import');
+        return await res.json();
+    }
+}

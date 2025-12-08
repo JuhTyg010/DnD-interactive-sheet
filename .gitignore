@@ -6,5 +6,5 @@ lib64
 pyvenv.cfg
 *.spec
 dist
-character.json
+*.json
 local

@@ -1,0 +1,60 @@
+body.launcher-mode { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
+    padding: 0; /* Override base.css padding */
+}
+
+.launcher-card { 
+    width: 500px; 
+    background: var(--c-bg-card); 
+    border: 1px solid var(--c-border); 
+    border-radius: 8px; 
+    padding: 30px; 
+}
+
+.char-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px; 
+    background: var(--c-bg-element); 
+    margin-bottom: 8px; 
+    border-radius: 4px; 
+    border: 1px solid transparent; 
+    cursor: pointer; 
+    transition: 0.2s; 
+}
+
+.char-row:hover { 
+    border-color: var(--c-purple); 
+    background: var(--c-bg-input);
+}
+
+.char-info { 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.char-path { 
+    font-size: 0.7em; 
+    color: var(--c-text-muted); 
+}
+
+.btn-group { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 20px; 
+    border-top: 1px solid var(--c-border); 
+    padding-top: 20px; 
+}
+
+.hidden { 
+    display: none; 
+}
+
+.browse-row { 
+    display: flex; 
+    gap: 10px;
+}

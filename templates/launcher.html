@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character Launcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/launcher.css') }}">
+</head>
+<body class="launcher-mode">
+    <div class="launcher-card">
+        <h1 class="text-purple text-center mb-15">Select Character</h1>
+        
+        <div id="charList" class="scroll-y" style="max-height: 300px;"></div>
+
+        <div class="btn-group">
+            <button id="btnShowCreate" class="btn btn-primary bg-purple" style="flex:1;">+ New Character</button>
+            <button id="btnImport" class="btn btn-cancel" style="flex:1;">Import JSON</button>
+        </div>
+
+        <div id="createForm" class="hidden" style="margin-top: 20px; border-top: 1px solid var(--c-border); padding-top: 15px;">
+            <h3 class="text-blue mb-15">Create New</h3>
+            
+            <div style="margin-bottom: 15px;">
+                <label class="text-small text-gray">Character Name</label>
+                <input type="text" id="newName" class="dark-input" placeholder="e.g. Asphoros">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label class="text-small text-gray">File Location</label>
+                <div class="browse-row">
+                    <input type="text" id="newPath" class="dark-input" placeholder="No file selected..." readonly style="flex:1; cursor: default; opacity: 0.7;">
+                    <button id="btnBrowse" class="btn btn-primary bg-purple">Browse...</button>
+                </div>
+            </div>
+
+            <div class="flex-end mt-30">
+                <button id="btnCancelCreate" class="btn btn-cancel">Cancel</button>
+                <button id="btnConfirmCreate" class="btn btn-primary bg-purple">Create & Load</button>
+            </div>
+        </div>
+    </div>
+
+    {% include 'partials/launcher_row.html' %}
+
+    <script type="module" src="{{ url_for('static', filename='js/launcher.js') }}"></script>
+</body>
+</html>
