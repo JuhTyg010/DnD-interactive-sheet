@@ -14,6 +14,7 @@ export class CharacterState {
 
     async save() {
         await this.api.saveCharacter(this.data);
+        this.data = await this.api.loadCharacter();
         this.onUpdate();
     }
 
@@ -34,7 +35,7 @@ export class CharacterState {
     }
 
     updateSkill(skill, val) { 
-        this.data.skills[skill] = parseInt(val); 
+        this.data.skills[skill] = parseInt(val);
         this.save(); 
     }
 
