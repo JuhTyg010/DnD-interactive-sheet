@@ -1,6 +1,6 @@
 # Changelog
 
-## [Version 1.0.1 8.12.2025]
+## [Version 1.0.1 date 8.12.2025]
 
 - Changed visual of the proficient checkbox.
 - Added launcher for selecton of the character
