@@ -33,10 +33,32 @@ class Launcher {
             tmpl.querySelector('.char-path').textContent = char.path;
             
             const rowDiv = tmpl.querySelector('.char-row');
-            rowDiv.onclick = () => this.selectChar(char.path);
+            
+            const loadAction = () => this.selectChar(char.path);
+            rowDiv.onclick = (e) => {
+                if(e.target.closest('.btn-del')) return;
+                loadAction();
+            };
+
+            const delBtn = tmpl.querySelector('.btn-del');
+            delBtn.onclick = (e) => {
+                e.stopPropagation();
+                this.deleteChar(char.path, char.name);
+            };
             
             container.appendChild(tmpl);
         });
+    }
+
+    async deleteChar(path, name) {
+        if(confirm(`Are you sure you want to PERMANENTLY delete "${name}"?\n\nThis will remove the entry and delete the file:\n${path}`)) {
+            const res = await this.api.deleteCharacter(path);
+            if(res.status === 'ok') {
+                this.loadList();
+            } else {
+                alert("Error deleting: " + res.error);
+            }
+        }
     }
 
     async selectChar(path) {

@@ -65,7 +65,6 @@ export class CharacterState {
 
         for (const [lvl, total] of Object.entries(newSlotsConfig)) {
             const oldData = currentSlots[lvl] || { used: 0 };
-            // Ensure used doesn't exceed new total
             const safeUsed = Math.min(oldData.used, total);
             
             resultSlots[lvl] = {
@@ -93,7 +92,6 @@ export class CharacterState {
         this.save();
     }
 
-    // --- Array Management (Inventory/Spells) ---
     addItem(name) {
         if(!this.data.inventory) this.data.inventory = [];
         this.data.inventory.push({ id: Utils.generateId(), name: name, type: 'item' });

@@ -69,4 +69,13 @@ export class LauncherAPI {
         const res = await fetch('/api/launcher/import');
         return await res.json();
     }
+
+    async deleteCharacter(path) {
+        const res = await fetch('/api/launcher/delete', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ path: path })
+        });
+        return await res.json();
+    }
 }

@@ -184,6 +184,35 @@ def import_char():
             
     return jsonify({"status": "cancel"})
 
+@app.route('/api/launcher/delete', methods=['POST'])
+def delete_char():
+    data = request.json
+    path = data.get('path')
+    
+    if not path:
+        return jsonify({"status": "error", "error": "No path provided"}), 400
+
+    # 1. Remove from config
+    config = load_launcher_config()
+    new_config = [c for c in config if c['path'] != path]
+    save_launcher_config(new_config)
+
+    # 2. Delete the actual file
+    if os.path.exists(path):
+        try:
+            os.remove(path)
+        except Exception as e:
+            # If we fail to delete the file, still return error, 
+            # but we already removed it from config so it won't show up.
+            return jsonify({"status": "error", "error": f"Could not delete file: {str(e)}"}), 500
+            
+    # 3. If the currently active character was deleted, reset it
+    global active_char_path
+    if active_char_path == path:
+        active_char_path = None
+
+    return jsonify({"status": "ok"})
+
 @app.route('/api/character', methods=['GET', 'POST'])
 def character_api():
     if request.method == 'POST':
