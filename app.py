@@ -121,6 +121,7 @@ def check_wikidot():
         return jsonify({'exists': False})
 
 if __name__ == '__main__':
+    DATA_FILE = sys.argv[1] if len(sys.argv) > 1 else 'character.json'
     window = webview.create_window(
         "D&D Character Sheet", 
         app,
