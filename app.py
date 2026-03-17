@@ -5,6 +5,10 @@ import math
 import random
 import requests
 import os
+import sys
+import threading
+import webbrowser
+import time
 
 app = Flask(__name__)
 
@@ -249,10 +253,26 @@ def check_wikidot():
         return jsonify({'exists': False})
 
 if __name__ == '__main__':
-    window = webview.create_window(
-        "D&D Character Manager", 
-        app, 
-        width=950, 
-        height=1000, 
-        resizable=True)
-    webview.start()
+    # If user passed --browser or --serve, run the Flask server and open the page in the default browser.
+    browser_mode = '--browser' in sys.argv or '--serve' in sys.argv or os.environ.get('BROWSER_MODE') == '1'
+
+    if browser_mode:
+        url = 'http://127.0.0.1:5000'
+        def _open():
+            time.sleep(0.35)
+            try:
+                webbrowser.open(url)
+            except Exception:
+                pass
+
+        threading.Thread(target=_open, daemon=True).start()
+        # Run Flask dev server so the UI is available in the browser
+        app.run(host='127.0.0.1', port=5000, debug=True)
+    else:
+        window = webview.create_window(
+            "D&D Character Manager", 
+            app, 
+            width=950, 
+            height=1000, 
+            resizable=True)
+        webview.start()

@@ -8,3 +8,5 @@ pyvenv.cfg
 dist
 *.json
 local
+.vscode
+.github
